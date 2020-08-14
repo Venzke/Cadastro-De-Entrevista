@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include <locale>
+#include <string.h>
+
+int main() {
+
+	setlocale(LC_ALL, "portuguese");
+
+	int idade, c, teste, ddd;
+	long int tel;			//variaveis
+	char nome[100], endereco[100], cidade[20];
+
+	printf("Olá, é um prazer te-la conosco!\n");
+	printf(" Para concorrer ao processo seletivo você terá que cadastrar seus dados abaixo. \n\n");
+
+	printf("== CADASTRO ==\n\n");
+	
+	printf("Nome: ");
+	gets_s(nome);
+	//while ((c = getchar()) != '\n' && c != EOF) {}
+
+	printf("Idade: ");
+	scanf_s("%i", &idade);
+	//while ((c = getchar()) != '\n' && c != EOF) {}
+
+	printf("\n");
+
+	printf("DDD: ");
+	scanf_s("%i", &ddd);
+
+	printf("Telefone: ");
+	scanf_s("%i", &tel);
+	while ((c = getchar()) != '\n' && c != EOF) {}
+
+	printf("\n");
+
+	printf("Cidade: ");
+	gets_s(cidade);
+
+	printf("Endereço: ");
+	gets_s(endereco);
+	//while ((c = getchar()) != '\n' && c != EOF) {}
+
+	printf("\n\n");
+	printf("== CONFIRMAÇÃO DE DADOS ==\n\n");
+
+	printf("Nome: %s\n", nome);
+	printf("Idade: %i\n", idade);																	//Confirmação dos dados
+	printf("Telefone: (%i)%i\n",ddd, tel);
+	printf("Cidade: %s\n", cidade);
+	printf("Endereço: %s", endereco);
+
+	printf("\n\n");
+	
+	
+	printf("Por favor confirme se seus dados estão corretos. \n");
+	printf(" Se estiver correto pressione 1 caso contrário pressione 2. \n");						//Verificação dos dados
+	scanf_s("%i", &teste);
+
+	printf("\n");
+
+		while (1)																					//Laço bugado 
+		{
+			if (teste == 2)																			//IF 2 irá realizar o cadastro novamente
+			{
+				printf("== Recadastro == \n\n");
+
+				printf("Nome: ");
+				gets_s(nome);
+				while ((c = getchar()) != '\n' && c != EOF) {}
+
+				printf("\n");
+
+				printf("Idade: ");
+				scanf_s("%i", &idade);
+				while ((c = getchar()) != '\n' && c != EOF) {}
+
+				printf("\n");
+
+				printf("Telefone: ");
+				scanf_s("%i", &tel);
+				while ((c = getchar()) != '\n' && c != EOF) {}
+
+				printf("\n");
+
+				printf("Cidade: ");
+				gets_s(cidade);
+				while ((c = getchar()) != '\n' && c != EOF) {}
+
+				printf("\n");
+
+				printf("Endereço: ");
+				gets_s(endereco);
+				while ((c = getchar()) != '\n' && c != EOF) {}
+
+
+				printf("\n\n");
+				printf("== CONFIRMAÇÃO DE DADOS ==\n\n");
+
+				printf("Nome: %s\n", nome);
+				printf("Idade: %i\n", idade);																	//Confirmação dos dados recadastrados
+				printf("Telefone: (%i)%i\n", ddd, tel);
+				printf("Cidade: %s\n", cidade);
+				printf("Endereço: %s", endereco);
+
+				printf("\n\n");
+
+				printf(" 1 Para encerrar o cadastro. \n");
+				printf(" 2 Para refazer o cadastro.\n");
+				scanf_s("%i", &teste);
+			}
+			if (teste == 1)																							//IF 1 retorna o valor encerrando o algoritmo
+			{
+				printf("Cadastro realizado com sucesso!!!\n\n");
+				return 0;
+			}
+			if (teste < 1 || teste > 2)																				//IF menor q 1 ou maior q 2 para numeros invalidos
+			{
+				printf("--ERRO--\n");
+				printf("Insira um número válido!\n\n");
+
+				printf(" 1 Para encerrar o cadastro. \n");
+				printf(" 2 Para refazer o cadastro.\n");
+				scanf_s("%i", &teste);
+			}
+
+		}	
+}
